@@ -1,8 +1,6 @@
 ---
 import Hero from "./Hero.astro";
 const {heroText, imagePath, altText} = Astro.props;
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/about/*.{jpeg,jpg,png,gif}')
-if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 
 <div class="main-grid">
@@ -15,7 +13,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
         </ul>
     </nav>
 </div>
-<Hero heroText={heroText} src={imagePath} altText={altText}>
+<Hero heroText={heroText} imagePath={imagePath} altText={altText}>
 
 <style>
     .wrapper {

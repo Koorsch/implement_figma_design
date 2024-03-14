@@ -20,7 +20,7 @@ const { title, imagePath, altText } = Astro.props;
         <title>{title}</title>
     </head>
     <body class="main-layout flow-space">
-        <header><Navhead src={imagePath} altText={altText}/></header>
+        <header><Navhead imagePath={imagePath} altText={altText}/></header>
         <main><slot/></main>
         <footer><Navfoot /></footer>
     </body>

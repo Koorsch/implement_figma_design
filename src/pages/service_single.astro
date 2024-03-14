@@ -7,8 +7,12 @@ import OurTeam from "../components/about/OurTeam.astro";
 import BookNow from "../components/about/BookNow.astro"
 ---
 
-<BasicLayout title="AskExperts - Service Single">
-
+<BasicLayout title="AskExperts - Service Single" imagePath="/src/assets/servicesingle_header.jpg" altText="Service Single header" heroText="Case Studies">
+    <OurVision pillText="Our Vision" pillStyle="green"/>
+    <GrowingClients pillText="Growing with our clients" pillStyle="yellow"/>
+    <OurHistory pillText="Our History" pillStyle="green" />
+    <OurTeam pillText="Our Team" pillStyle="yellow" pillSize=""/>
+    <BookNow />
 </BasicLayout>
 
 <style>
