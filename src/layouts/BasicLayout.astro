@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+import Navhead from "../components/Navhead.astro";
+import Navfoot from "../components/Navfoot.astro";
+
+const { title, imagePath, altText } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content="">
+        <meta name="robots" content="noindex" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../src/icons/favicon.svg">
+        <title>{title}</title>
+    </head>
+    <body class="main-layout flow-space">
+        <header><Navhead src={imagePath} altText={altText}/></header>
+        <main><slot/></main>
+        <footer><Navfoot /></footer>
+    </body>
+</html>

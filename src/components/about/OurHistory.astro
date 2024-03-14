@@ -1,0 +1,122 @@
+---
+import Pill from "../Pill.astro";
+import { Icon } from "astro-icon/components";
+const {pillStyle, pillText} = Astro.props;
+---
+
+<section class="main-grid">
+    <section class="our_history container_wrapper">
+        <article class="section-spacing">
+            <Pill pillStyle={pillStyle} pillText={pillText} pillSize="big"/>
+            <h3>Better Website Means A Better User Experience</h3>
+            <p>Ippsum is the result of synergy between our teams and our customers. 
+                Our company culture is focused on excellent productivity, customer satisfaction, 
+                respect for team and individual achievements.</p>
+        </article>
+        <article class="section-spacing">
+            <figure>
+                <img src="../src/assets/about/video_picture.jpg" alt="">
+                <Icon name="play_button" />
+            </figure>
+        </article>
+    </section>
+</section>
+
+<style>
+    .our_history {
+    --space: 5rem;
+    display: grid;
+    grid-column: content;
+    gap: min(var(--space), 1rem);
+    margin-block: max(var(--space), 3rem);
+    padding-inline: 5rem;
+    & :is(article):first-of-type {
+        display: grid;
+        text-align: center;
+        place-items: center;
+        justify-items: center;    
+    }
+    article > h3 {
+        max-width: 24ch;
+        font-size: var(--font-size-3);
+    }
+    article > p {
+        font-size: var(--font-size--1);
+    }
+}
+figure {
+    --sides: minmax(2rem, 4rem);
+    --middle: minmax(10rem, 1fr);
+        display: grid;
+        grid: var(--sides) var(--middle) var(--middle) var(--middle) var(--sides) / var(--sides) var(--middle) var(--middle) var(--middle) var(--sides);  
+        position: relative;
+        justify-items: center;
+        padding-inline: 3rem;
+        margin-block: 1rem;
+        & > img {
+            grid-area: 2 / 2 / 5 / 5;
+            margin-block: 3rem;
+            align-self: stretch;
+            object-position: center;
+            object-fit: cover;
+            border-radius: 1.3rem;
+            z-index: 5;
+        }
+        & svg {
+            --svg-size: 10rem;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+            z-index: 6;
+            grid-area: 3 / 3 / 4 / 4;
+            block-size: min(var(--svg-size), 5rem);
+        }
+        svg:hover {
+            scale: 1.2;
+        }
+    }
+figure::before {
+    content: '';
+    grid-area: 4 / 1 / 6 / 3;
+    display: inline-block;
+    z-index: 4;
+    margin-block-start: 2rem;
+    margin-inline-end: 9rem;
+    width: 8rem;
+    height: 8rem;
+    background: var(--prime-green);
+    border-radius: 1.25rem;
+}
+figure::after {
+    content: '';
+    grid-area: 1 / 4 / 3 / 6;
+    display: inline-block;
+    margin-inline-start: 5rem;
+    margin-top: 3rem;
+    z-index: 3;
+    width: 12rem;
+    height: 12rem;
+    opacity: 1;
+    border-radius: 1.25rem;
+
+    /* FIX AT SOME POINT?   */
+
+    --circle: var(--prime-yellow);
+    background-image: radial-gradient(var(--circle) 3px, transparent 3px), radial-gradient(var(--circle) 3px, transparent 3px);
+    background-color: transparent;
+    background-position: 0 0, 1rem 1rem;
+    background-size: 2rem 2rem;
+}
+
+.container_wrapper {
+        --wrapper: history;
+    }
+    @container history (width < 800px) {
+        .our_history {
+            gap: 0rem;
+        }
+        figure {
+            display: none;
+        }
+    }
+</style>

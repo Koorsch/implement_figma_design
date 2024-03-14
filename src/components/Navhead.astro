@@ -1,0 +1,35 @@
+---
+import Hero from "./Hero.astro";
+const {heroText, imagePath, altText} = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/about/*.{jpeg,jpg,png,gif}')
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+---
+
+<div class="main-grid">
+    <nav>
+        <ul>
+            <li><a href="/#">About</a></li>
+            <li><a href="/casestudy_single">Case Study</a></li>
+            <li><a href="/service_single">Service</a></li>
+            <li><a href="/team">Team</a></li>
+        </ul>
+    </nav>
+</div>
+<Hero heroText={heroText} src={imagePath} altText={altText}>
+
+<style>
+    .wrapper {
+        grid-column: page;
+    }
+    nav {
+        & section.topbar {
+            height: 3rem;
+            background-color: var(--prime-black-dark);
+        }
+        & section.bottombar {
+            height: 5rem;
+            background-color: var(--prime-black-light);
+        }
+    }
+
+</style>

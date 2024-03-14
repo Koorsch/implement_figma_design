@@ -1,0 +1,29 @@
+---
+
+---
+
+<picture>
+    <img src="../src/icons/favicon.svg" alt="Company Logo">
+    <h3>AskExperts</h3>
+</picture>
+
+<style>
+picture {
+    display: inline-flex;
+    column-gap: 0.5rem;
+    margin-block: 1.5rem;
+    align-items: flex-start;
+    justify-items: baseline;
+    height: fit-content;
+    width: fit-content;
+    & img {
+        /* width: clamp(1rem, 5svh, 2.5rem); */
+        width: auto;
+        object-fit: cover;
+        /* align-self: stretch; */
+    }
+    & h3 {
+        color: var(--prime-white);
+    }
+}
+</style>

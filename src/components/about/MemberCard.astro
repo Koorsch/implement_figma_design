@@ -1,0 +1,84 @@
+---
+import { Icon } from "astro-icon/components"
+import Pill from "../Pill.astro";
+const { memberImg, memberName, memberText, instagram, facebook, twitter, pillStyle, pillText, pillSize} = Astro.props;
+---
+
+<section class="sections-spacing">
+    <figure>
+        <!-- use <Image> from astro instead, todo -->
+        <!-- fix pill to be inside the image to the right, todo -->
+        <div>
+            <Pill pillStyle={pillStyle} pillText={pillText} pillSize={pillSize}/>
+        </div>
+        <img src={memberImg} alt=`This is our member ${memberName}`>
+    </figure>
+    <article class="memberText">
+        <h3>{memberName}</h3>
+        <h4>{memberText}</h4>
+    </article>
+        <article class="flexing">
+            <a href={instagram}>
+                <Icon name="instagram"/>
+            </a>
+            <a href={facebook}>
+                <Icon name="facebook"/>
+            </a>
+            <a href={twitter}>
+                <Icon name="twitter" />
+            </a>
+        </article>
+</section>
+
+<style>
+    :has(h3 + h4) {
+        h3 {
+            font-size: var(--font-size-1);
+        }
+        h4 {
+            max-width: 40ch;
+            font-family: var(--text-copy);
+            font-weight: var(--font-weight--1);
+            font-size: var(--font-size-0);
+            line-height: var(--font-line-height-3);
+            color: var(--prime-text-color-light);
+            margin-block-end: 1rem;
+        }
+    }
+    .flexing {
+        --space: 0.5rem;
+        column-gap: 3rem;
+        align-items: center;
+        justify-content: center;
+        color: currentColor;
+    }
+    .memberText {
+        display: inline-block;
+        row-gap: 1rem;
+        text-wrap: pretty;
+        text-align: center;
+    }
+    figure {
+        display: grid;
+        grid: 1fr 1fr / 1fr;
+        & > img {
+            border-radius: 2rem;
+            grid-area: 1 / 1 / 3 / 2;
+        }
+        & div {
+            margin-inline-end: 1rem;
+            margin-block: 2rem;
+            align-self: flex-end;
+            justify-self: right;
+            z-index: 100;
+            grid-area: 2 / 1 / 3 / 2;
+        }
+    }
+    svg {
+        --svg-color: black;
+        --svg-fill: black;
+        --svg-height: 2rem;
+        --svg-width: 2rem;
+    }
+    
+</style>

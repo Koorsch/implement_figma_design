@@ -1,0 +1,35 @@
+---
+const { coworkerName, coworkerTitle, coworkerPicture } = Astro.props;
+---
+
+<section>
+    <picture>
+        <img src=`"../assets/team/${coworkerPicture}.webp"` alt=`"${coworkerName} is a ${coworkerTitle} at AskExperts."`>
+        <figcaption>{coworkerTitle}</figcaption>
+    </picture>
+    <div class="textBox">
+        <h2>{coworkerName}</h2>
+        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews.</p>
+        <picture class="socials">
+            <img src="../icons/team/instagram.svg" alt="Instagram">
+            <img src="../icons/team/facebook.svg" alt="Facebook">
+            <img src="../icons/team/twitter.svg" alt="Twitter">
+        </picture>
+    </div>
+</section>
+
+<style>
+section {
+    display: grid;
+    place-content: center;
+}
+
+.textBox {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    & .socials {
+        
+    }
+}
+</style>

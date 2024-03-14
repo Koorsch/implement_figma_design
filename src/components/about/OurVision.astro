@@ -1,0 +1,148 @@
+---
+import Pill from "../Pill.astro"
+const { pillText, pillStyle} = Astro.props;
+---
+
+<section class="main-grid">
+    <section class="our_vision container_wrapper">
+        <article class="section-spacing">
+            <div>
+                <Pill pillText={pillText} pillStyle={pillStyle}/>
+                <h3>Turn your ideas into reality.</h3>
+                <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
+                <ol class="checked_list">
+                    <li>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day.</li>
+                    <li>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital.</li>
+                </ol>
+             </div>
+            <figure>
+                <img src="src/assets/about/our_vision.jpg" alt="Our Vision">
+            </figure>
+        </article>
+        <dl class="flexing">
+            <div>
+              <dt>Successful Work</dt>
+              <dd>1128+</dd>
+            </div>
+            <div>
+              <dt>Team member</dt>
+              <dd>908+</dd>
+            </div>
+            <div>
+              <dt>Happy Customers</dt>
+              <dd>258+</dd>
+            </div>
+            <div>
+              <dt>Creative Idea</dt>
+              <dd>564+</dd>
+            </div>
+          </dl>
+    </section>
+</section>  
+
+<style>
+.our_vision {
+    display: grid;
+    grid-column: content;
+    column-gap: 1.19rem;
+        & .section-spacing {
+            display: grid;
+            grid: 1fr / 1fr 1fr;
+            column-gap: 3rem;
+        }
+        & .flexing {
+            --margin: 1rem;
+            --space: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            & > div {
+                display: flex;
+                row-gap: 0.5rem; 
+                flex-direction: column-reverse;
+                & > dt {
+                    font-size: var(--font-size--1);
+
+                }
+                & > dd {
+                    font-weight: var(--font-weight-4);
+                    font-size: var(--font-size-2);
+                }
+            }
+        }
+        ol.checked_list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            li {
+                line-height: 116%;
+                --marker: url("../../icons/checked_icon.svg");
+                &::marker {
+                    content: var(--marker);
+                }
+            }
+        }
+    }
+    figure {
+        display: grid;
+        position: relative;
+        justify-items: center;
+        margin-block-start: 3rem;
+        margin-right: 3rem;
+
+        & > img {
+            align-self: stretch;
+            object-position: center;
+            object-fit: cover;
+            border-radius: 1.3rem;
+            z-index: 5;
+        }
+    }
+    figure::before {
+        content: '';
+        position: absolute;
+        justify-self: flex-end;
+        top: -1rem;
+        right: -1.25rem;
+        display: inline-block;
+        z-index: 4;
+        width: 6rem;
+        height: 6rem;
+        background: var(--prime-green);
+        border-radius: 1.25rem;
+    }
+    figure::after {
+        content: '';
+        position: absolute;
+        justify-self: flex-end;
+        top: -3rem;
+        right: -3.25rem;
+        display: inline-block;
+        z-index: 3;
+        width: 10rem;
+        height: 10rem;
+        opacity: 1;
+        border-radius: 1.25rem;
+
+        /* FIX AT SOME POINT?   */
+
+        --circle: var(--prime-yellow);
+        background-image: radial-gradient(var(--circle) 3px, transparent 3px), radial-gradient(var(--circle) 3px, transparent 3px);
+        background-color: transparent;
+        background-position: 0 0, 1rem 1rem;
+        background-size: 2rem 2rem;
+    }
+.container_wrapper {
+        --wrapper: vision;
+    }
+    @container vision (width < 800px) {
+        .section-spacing  {
+            grid: auto / 1fr;
+            & div {
+                grid-column: 1 / -1;
+            }
+        }
+        figure {
+            display: none;
+        }
+    }
+</style>

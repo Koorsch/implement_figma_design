@@ -1,0 +1,48 @@
+---
+const { pillText, pillStyle, pillSize} = Astro.props;
+
+// USING THE PILL!
+// <Pill pillText="" pillStyle=""/>
+    // pillText: what's inside the pill?
+    // pillStyle: what color do you want?
+    // pillSize: big for uppercase, default small
+---
+
+<h2 data-style={pillStyle} data-size={pillSize}>{pillText}</h2>
+
+<style>
+h2 {
+    font-family: var(--text-copy);
+    font-size: var(--font-size--1);
+    font-weight: var(--font-weight-0);
+    line-height: var(--font-line-height-1);
+    letter-spacing: var(--font-letter-spacing-1);
+    inline-size: fit-content;
+}
+[data-style] {
+    padding: 0rem 0.6875rem;
+    border-radius: 1.25rem;
+    background: var(--pillBG, var(--prime-white-dark));
+    color: var(--pillCol, var(--prime-black));
+}
+[data-style="yellow"] {
+    --pillBG: var(--prime-yellow);
+    --pillCol: var(--prime-black);
+}
+[data-style="green"] {
+    --pillBG: var(--prime-green);
+    --pillCol: var(--prime-white);
+
+}
+[data-style="black"] {
+    --pillBG: var(--prime-black-dark);
+    --pillCol: var(--prime-white);
+}
+[data-size] {
+    text-transform: none;
+}
+[data-size="big"] {
+    text-transform: uppercase;
+}
+    
+</style>

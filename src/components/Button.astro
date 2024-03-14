@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon/components";
+const {btnStyle, btnText, btnIcon, useIcon} = Astro.props;
+// Using le button: <Button useIcon="" btnIcon="" btnStylet="" btnText=""/>
+    // useIcon: use an icon or not?
+    // btnIcon: checks in src/icons, just put in the name of the icon you want to use <- 
+    // btnStyle: checks the [data-style] in <styles>
+    // btnText: put your text in!
+
+---
+
+<button role="button" data-style={btnStyle}>
+    {useIcon === "true" && (
+          <figure>
+            <Icon name={btnIcon} />
+          </figure>
+        )}
+<span>{btnText}</span>
+</button>
+
+<style>
+    button {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        gap: 1rem;
+        border-radius: 2.625rem;
+        padding: 0.25rem 1.125rem;
+            & span {
+                font-size: var(--font-size--1);
+                font-weight: var(--font-weight-1);
+                line-height: var(--lineheight-step-2);
+            }
+    }
+    figure {
+        --svg-width: 2.2rem;
+        inline-size: 2.35056rem;
+        block-size: fit-content;
+    } 
+    [data-style] {
+      border: 2px solid var(--border);
+      max-inline-size: fit-content;
+    }
+    [data-style="black"] {
+        --hover-color: var(--prime-black-dark);
+        --hover-bg: var(--prime-white);
+        --border: var(--prime-black-dark);
+        background-color: var(--prime-black-dark);
+        color: var(--prime-white);
+    }
+    [data-style="yellow"] {
+        --hover-color: var(--prime-white);
+        --hover-bg: var(--prime-black-dark);
+        --border: transparent;
+        background-color: var(--prime-yellow);
+        color: var(--prime-back-dark);
+    }
+    [data-style="white"] {
+        --hover-color: var(--prime-white);
+        --hover-bg: var(--prime-black-dark);
+        --border: transparent;
+        background-color: var(--prime-white);
+        color: var(--prime-back-dark);
+    }
+    button:has([data-variant]):hover {
+        color: var(--hover-color);
+        background-color: var(--hover-bg);
+        border: 2px solid var(--border);
+    }
+</style>

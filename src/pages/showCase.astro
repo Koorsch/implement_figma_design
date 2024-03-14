@@ -1,0 +1,29 @@
+---
+import BasicLayout from "../layouts/BasicLayout.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+import Pill from "../components/Pill.astro";
+---
+
+<BasicLayout title="AskExperts - About">
+    <section class="section-spacing">
+        <h1>Content</h1>
+        <p>Goes here</p>
+    </section>
+    <section class="section-spacing">
+        <h2>Content</h2>
+        <p>Goes here</p>
+    </section>
+    <section class="section-spacing">
+        <Pill pillText="This is default" pillStyle="black" pillSize="big"/>
+        <Pill pillText="This is green" pillStyle="green" pillSize/>
+        <Pill pillText="This is yellow" pillStyle="yellow" pillSize="big"/>
+    </section>
+    <Button useIcon="true" btnIcon="telephone" variant="yellow" btnText="Heeeeeeeydiiiihoooo"/>
+    <Button useIcon="true" btnIcon="telephone" variant="black" btnText="Heeeeeeeydiiiihoooo"/>
+    <Button useIcon="true" btnIcon="telephone" variant="white" btnText="Heeeeeeeydiiiihoooo"/>
+</BasicLayout>
+
+<style>
+    
+</style>

@@ -1,6 +1,71 @@
 ---
-
+const { cardHeader, cardText, cardStyle } = Astro.props;
+import { Icon } from "astro-icon/components";
+// Usage of le card
 ---
 
+<section data-variant={cardStyle}>
+    <div>
+        <Icon name="about/1" />    
+        <h4>{cardHeader}</h4>
+        <p>{cardText}</p>
+    </div>
+    <div>
+        <a href="">Read More</a>
+        <Icon name="arrow">
+    </div>
+</section>
 
+<style>
+    section {
+        display: grid;
+        grid: auto / 1fr;
+        align-content: space-evenly;
+        border-radius: 1.25rem;
+        padding: 2.25rem 1.4375rem;
+        margin-block: 1rem;
+
+        & h4 {
+            font-size: var(--font-size--1);
+            font-weight: var(--font-weight-3);
+        }
+        & p {
+            font-size: var(--font-size--1);
+        }
+
+        & :first-child:is(div) {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        & svg {
+            inline-size: 2.5rem;
+        }
+        & :is(div):last-child {
+            display: inline-flex;
+            margin-block: 1rem;
+            column-gap: 0.5rem;
+            & a {
+                color:var(--prime-black);
+                text-decoration: none;
+                font-weight: var(--font-weight-3);
+                &:hover {
+                    text-decoration: underline;
+                    font-weight: var(--font-weight-4);
+                }
+            }
+            & svg {
+                inline-size: fit-content;
+            }
+        }
+    }
+[data-variant] {
+    background-color: var(--prime-white-light);
+}
+[data-variant="black"] {
+    background-color: var(--prime-black);
+}
+
+</style>
 

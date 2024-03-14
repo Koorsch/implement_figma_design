@@ -1,0 +1,65 @@
+---
+import Pill from "../Pill.astro"
+import Button from "../Button.astro"
+import Card from "../Card.astro"
+const { pillStyle, pillText} = Astro.props;
+---
+
+<section class="main-grid">
+    <section class="gwoc container_wrapper">
+        <article class="values_principles">
+            <div class="gwoc-content">
+                <Pill pillStyle={pillStyle} pillText={pillText} pillSize="big"/>
+                <h3>Our core values & principles</h3>
+                <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.</p>
+            </div>
+            <div>
+                <Button btnIcon="false" btnText="Get in touch" btnStyle="black" />
+            </div>
+
+        </article>
+        <ul class="card_list">
+            <!-- add map here? remember to get all the stuffs -->
+            <Card cardHeader="Creative Ideas" cardText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget accumsan augue Donec aliquam." cardStyle />
+            <Card cardHeader="Best Features" cardText="Lorem ipsum dolor sit amet, consectetur adipiscing elit." cardStyle/>
+            <Card cardHeader="Experience" cardText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget accumsan augue Donec aliquam." cardStyle/>
+            <Card cardHeader="Easy Solutions" cardText="Lorem ipsum dolor sit amet, consectetur adipiscing elit." cardStyle/>
+        </ul>
+    </section>
+</section>
+
+<style>
+    .container_wrapper {
+        --wrapper: gwoc;
+        margin-block: var(--space);
+    }
+    .gwoc {
+        display: grid;
+        grid-column: content;
+        grid: auto / 1fr;
+    }
+.values_principles {
+    display: grid;
+    grid: auto / 1fr auto;
+    & :first-child {
+
+    }
+    & :last-child {
+        align-self: flex-end;
+    }
+}
+.card_list {
+    display: grid;
+    padding-inline-start: 0;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    grid: auto / repeat(auto-fit, minmax(250px, 1fr));
+    column-gap: 2rem;
+}
+@container gwoc (width < 700px) {
+    .values_principles {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+    }
+}
+</style>

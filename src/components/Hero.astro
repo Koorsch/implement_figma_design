@@ -1,0 +1,57 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Pill from "./Pill.astro";
+const { heroText, imagePath, altText} = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+---
+<section class="main-grid container_wrapper">
+    <section class="heroBG section-spacing">
+        <picture class="grid-full">
+            <Image src={images[imagePath]()} alt={altText}/>
+        </picture>
+        <article>
+            <Pill pillStyle="yellow" pillText="services" pillSize="big"/>
+            <h3>{heroText}</h3>
+        </article>    
+    </section>
+</section>
+
+<style>
+    .container_wrapper {
+        --wrapper: booking;
+        --space: 5rem;
+        margin-block: var(--space);
+    }
+    .heroBG {
+        display: grid;
+        grid: 1fr / 1fr;
+
+        & img {
+            grid-area: 1 / 1;
+            align-self: stretch;
+            object-fit: contain;
+            object-position: center;
+            }
+            & > article {
+                display: grid;
+                row-gap: 1rem;
+                margin-inline: 10rem;
+                margin-inline-start: -5rem;
+                grid-column: content;
+                grid-area: 1 / 1;
+                border-radius: 2rem;
+                background: var(--prime-white-light);
+                backdrop-filter: blur(5.5px);
+                place-self: center;
+                padding: 3rem 3.75rem 3.625rem 3.75rem;
+                & > h3 {
+                    max-width: 20ch;
+                }
+            }
+            & * {
+                max-width: fit-content;
+            }
+    }
+</style>

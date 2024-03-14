@@ -1,0 +1,229 @@
+@import "../styles/reset.css";
+@layer reset, global;
+
+@layer global {
+    :root {
+
+    /* VARIABLES */
+
+
+        /* Variable for layout size */
+        /* 75 rem = 1200px */
+        --layout-size: min(75rem, 100% - 2rem * 2);
+
+        /* Colors, with some small accents for flair.
+        otherwise default are used. */
+        --prime-text-color-dark: hsl(0, 0%, 9%);
+        --prime-text-color: hsl(0, 0%, 11%);
+        --prime-text-color-light: hsl(0, 0%, 15%);
+        --prime-yellow-darker: hsl(43, 100%, 45%);
+        --prime-yellow-dark: hsl(43, 100%, 55%);
+        --prime-yellow: hsl(43, 100%, 65%);
+        --prime-yellow-light: hsl(43, 100%, 75%);
+        --prime-yellow-lighter: hsl(43, 100%, 85%);
+        --prime-green-darker: hsl(120, 58%, 30%);
+        --prime-green-dark: hsl(120, 48%, 40%);
+        --prime-green: hsl(120, 38%, 50%);
+        --prime-green-light: hsl(120, 38%, 50%);
+        --prime-green-lighter: hsl(120, 38%, 50%);
+        --prime-black-dark: hsl(0, 0%, 5%);
+        --prime-black-: hsl(0, 0%, 9%);
+        --prime-black-light: hsl(0, 0%, 13%);
+        --prime-white-dark: hsl(0, 0%, 92%);
+        --prime-white: hsl(0, 0%, 96%);
+        --prime-white-light: hsl(0, 0%, 100%);
+
+        /* Fonts */
+        --text-copy: "Lato", system-ui, sans-serif;
+        --text-heading: "Cabin", system-ui, sans-serif;
+
+        /* Font-weights */
+        --font-weight-1: 400;
+        --font-weight-2: 500;
+        --font-weight-3: 600;
+        --font-weight-4: 700;
+
+        /* Font-sizes */
+        --font-size--1: clamp(0.8rem, 0.7847rem + 0.0765vi, 0.844rem);
+        --font-size-0: clamp(1rem, 0.9565rem + 0.2174vi, 1.125rem);
+        --font-size-1: clamp(1.25rem, 1.1632rem + 0.4341vi, 1.4996rem);
+        --font-size-2: clamp(1.5625rem, 1.4107rem + 0.7591vi, 1.999rem);
+        --font-size-3: clamp(1.9531rem, 1.7056rem + 1.2375vi, 2.6647rem);
+        --font-size-4: clamp(2.4414rem, 2.0551rem + 1.9315vi, 3.552rem);
+        --font-size-5: clamp(3.0518rem, 2.4663rem + 2.9271vi, 4.7348rem);
+
+        /* Font-spacing */
+        --space-xs: clamp(0.75rem, 0.7065rem + 0.2174vi, 0.875rem);
+        --space-s: clamp(1rem, 0.9565rem + 0.2174vi, 1.125rem);
+        --space-m: clamp(1.5rem, 1.4348rem + 0.3261vi, 1.6875rem);
+        --space-l: clamp(2rem, 1.913rem + 0.4348vi, 2.25rem);
+        --space-xl: clamp(3rem, 2.8696rem + 0.6522vi, 3.375rem);
+        --space-2xl: clamp(4rem, 3.8261rem + 0.8696vi, 4.5rem);
+        --space-3xl: clamp(6rem, 5.7391rem + 1.3043vi, 6.75rem);
+
+        /*Font-letter spacing, density of text */
+        --font-letter-spacing-1: 0.145rem;
+        --font-letter-spacing-2: 3.2625rem;
+
+        /*Line Heights*/
+        --font-line-height-1: 1.45rem;
+        --font-line-height-2: 1.475rem;
+        --font-line-height-3: 1.8rem;
+        --font-line-height-4: clamp(2.55rem, 1.8707rem + 1.6185cqi, 3.225rem);
+    }  
+    body {
+        color: var(--prime-black-light);
+        font-family: var(--text-copy);
+        font-size: var(--font-size--1);
+        font-weight: var(--font-weight-1);
+        line-height: var(--font-line-height-1);
+
+        container: main-space / inline-size;
+        
+        & :is(main, .main-grid) {
+            --space: 5rem;
+            display: grid;
+            grid-template-columns:
+                [page-start] 1fr 
+                [content-start] minmax(0, var(--layout-size)) 
+                [content-end] 1fr 
+                [page-end];
+
+            & > * {
+                grid-column: page;
+            }
+            & > * + *:nth-child(odd) {
+                background-color: var(--prime-white-light);
+            }
+            & > * + *:nth-child(even) {
+                background-color: var(--prime-white-dark);
+            }
+        }
+        & :is(footer, header) {
+            background-color: var(--prime-black-dark);
+        }
+    }
+    @container main-space (width < 500px) {
+        body {
+            --space: 3rem;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        font-style: normal;
+        font-family: var(--text-heading);
+        font-weight: var(--font-weight-3);
+        line-height: var(--font-line-height-4);
+        color: var(--prime-text-color);
+    }
+    h1 {
+        font-size: var(--font-size-5);
+        font-weight: var(--font-weight-4);
+    }
+    h2 {
+        font-size: var(--font-size-4);
+    }
+    h3 {
+        font-size: var(--font-size-3);
+        margin-block: var(--space-s);
+    }
+    h4 {
+        font-size: var(--font-size-2);
+    }
+    h5 {
+        font-size: var(--font-size-1);
+    }
+    p {
+        max-inline-size: 65ch;
+    }
+    svg {
+        --svg-fill: currentColor;
+        --svg-color: black;
+        width: min(var(--svg-width), 2.5rem);
+        height: min(var(--svg-height), 2.5rem);
+        color: var(--svg-color);
+        fill: var(--svg-fill);
+    }
+
+/*  #####
+    CLASSES
+    ##### */
+        
+/* The mythical flowspace */
+    .flow-space {
+        & > * + * {
+            margin-block: var(--space, 1em);
+        }
+    }
+/* Getting some air in those sections */
+.section-spacing {
+    &:not(:has(article)) {
+        & h2 {
+        margin-block-end: 1.1875rem;
+        }
+    }
+    &:has(article) {
+        div > * {
+        margin-block-end: 1.1875rem;
+        }
+        h3 {
+            max-width: 24ch;
+        }
+    }
+    h2 + p {
+        margin-block-end: 0.875rem;
+    }
+    h3 > p {
+        margin-block-start: 2rem;
+        max-width: 24ch;
+        & > * {
+            margin-block-end: 1rem;
+        }
+    }
+    h3 + * {
+        margin-block-end: 0.7rem;
+    }
+    button {
+        margin-block-start: 1.31rem;
+    }
+}
+/* Reusable flexing container - for stats and socials */
+.flexing {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: min(var(--space), 2rem);
+    margin-block: max(var(--margin), 3rem);
+    justify-content: space-evenly;
+    text-align: center;
+}
+.card_list {
+    display: grid;
+    padding-inline-start: 0;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    grid: auto / repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* implement these at some point !!!!*/
+/* 
+
+figure.floaty_box::before {
+}
+figure.pattern::after {
+}
+
+*/
+
+
+/* WRAPPEROONIES */
+/* Don't forget to put a --wrapper: name in the component it's used */
+.container_wrapper {
+    container: var(--wrapper) / inline-size;
+}
+Need more space, use all the columns from main-grid, implicitly */
+     .grid-full {
+    grid-area: page;
+    }
+
+}
