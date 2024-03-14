@@ -221,7 +221,7 @@ figure.pattern::after {
 .container_wrapper {
     container: var(--wrapper) / inline-size;
 }
-Need more space, use all the columns from main-grid, implicitly */
+/* Need more space, use all the columns from main-grid, implicitly */
      .grid-full {
     grid-area: page;
     }
