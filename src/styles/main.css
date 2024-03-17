@@ -1,0 +1,5 @@
+@layer reset, global, components, override;
+
+@import url(../styles/reset.css) layer(reset);
+@import url(../styles/global.css) layer(global);
+@import url(../styles/override.css) layer(override);

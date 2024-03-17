@@ -4,6 +4,7 @@ const {heroText, imagePath, altText} = Astro.props;
 ---
 
 <div class="main-grid">
+    <section class="topbar"></section>
     <nav>
         <ul>
             <li><a href="/#">About</a></li>
@@ -19,11 +20,12 @@ const {heroText, imagePath, altText} = Astro.props;
     .wrapper {
         grid-column: page;
     }
+    .topbar {
+        height: 3rem;
+        background-color: var(--prime-black-dark);
+    }
     nav {
-        & section.topbar {
-            height: 3rem;
-            background-color: var(--prime-black-dark);
-        }
+        grid-column: content;
         & section.bottombar {
             height: 5rem;
             background-color: var(--prime-black-light);

@@ -1,6 +1,5 @@
 ---
 import Pill from "../Pill.astro"
-import Button from "../Button.astro"
 import MemberCard from "../about/MemberCard.astro"
 const { pillStyle, pillText, pillSize, role} = Astro.props;
 ---
@@ -17,9 +16,9 @@ const { pillStyle, pillText, pillSize, role} = Astro.props;
         </article>
         <ul class="card_list">
             <!-- add map here remember to get all the stuffs -->
-            <MemberCard memberImg="src/assets/team/sarah.jpg" memberName="Sarah Jasmine" memberText="Leverage agile frameworks to provide a robust synopsis for high level overviews." linkedIn="#" facebook="#" twitter="#" pillText="CEO at Company" pillStyle="yellow" pillSize=/>
-            <MemberCard memberImg="src/assets/team/sarah.jpg" memberName="Sarah Jasmine" memberText="Leverage agile frameworks to provide a robust synopsis for high level overviews." linkedIn="#" facebook="#" twitter="#" pillText="Manager" pillStyle="black" pillSize/>
-            <MemberCard memberImg="src/assets/team/sarah.jpg" memberName="Sarah Jasmine" memberText="Leverage agile frameworks to provide a robust synopsis for high level overviews." linkedIn="#" facebook="#" twitter="#" pillText="CEO at Company" pillStyle="black" pillSize=/>
+            <MemberCard memberImg="/src/assets/team/sarah.jpg" memberName="Sarah Jasmine" memberText="Leverage agile frameworks to provide a robust synopsis for high level overviews." linkedIn="#" facebook="#" twitter="#" pillText="CEO at Company" pillStyle="yellow" pillSize/>
+            <MemberCard memberImg="/src/assets/team/sarah.jpg" memberName="Sarah Jasmine" memberText="Leverage agile frameworks to provide a robust synopsis for high level overviews." linkedIn="#" facebook="#" twitter="#" pillText="Manager" pillStyle="black" pillSize/>
+            <MemberCard memberImg="/src/assets/team/sarah.jpg" memberName="Sarah Jasmine" memberText="Leverage agile frameworks to provide a robust synopsis for high level overviews." linkedIn="#" facebook="#" twitter="#" pillText="CEO at Company" pillStyle="black" pillSize/>
         </ul>
     </section>
 </section>
